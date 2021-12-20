@@ -40,6 +40,7 @@ function getStudent(){
         {
             document.getElementById("table-student").className = "table table-striped table-responsive";
             document.getElementById("table-body").innerHTML = '';
+            document.getElementById("student_id").value = '';
             document.getElementById("nombre").value = '';
             document.getElementById("apellido").value = '';
             document.getElementById("edad").value = '';

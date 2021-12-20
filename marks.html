@@ -43,60 +43,58 @@
 
                     <div class="input-group mb-3">
                         <span class="input-group-text"
-                            id="basic-addon1">id&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                        <input type="text" name="student_id" id="student_id" class="form-control" placeholder="Id"
-                            aria-label="Id" aria-describedby="basic-addon1">
+                            id="basic-addon1">Id Nota&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <input type="number" name="marks_id" id="marks_id" class="form-control" placeholder="Id Nota"
+                            aria-label="Id Nota" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text"
-                            id="basic-addon1">Nombre&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"
-                            aria-label="Nombre" aria-describedby="basic-addon1">
-                    </div>
+                            id="basic-addon1">Id Estudiante</span>
+                        <input type="number" name="student_id" id="student_id" class="form-control" placeholder="Id Estudiante"    
+                            aria-label="Id Estudiante" aria-describedby="basic-addon1">
+                    </div>        
 
                     <div class="input-group mb-3">
                         <span class="input-group-text"
-                            id="basic-addon1">Apellido&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                        <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido"
-                            aria-label="Apellido" aria-describedby="basic-addon1">
+                        id="basic-addon1">Id Asignatura</span>
+                        <input type="number" name="subject_id" id="subject_id" class="form-control" placeholder="Id Asignatura"
+                        aria-label="Id Asignatura" aria-describedby="basic-addon1">
                     </div>
-
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Fecha nota&nbsp&nbsp&nbsp</span>
+                        <input type="date" name="date" id="date" class="form-control" placeholder="Fecha nota"
+                        aria-label="Fecha nota" aria-describedby="basic-addon1">
+                    </div>
+                    
                     <div class="input-group mb-3">
                         <span class="input-group-text"
-                            id="basic-addon1">Edad&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                        <input type="number" name="edad" id="edad" class="form-control" placeholder="Edad"
-                            aria-label="Edad" aria-describedby="basic-addon1" min="16" max="120">
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Id
-                            grupo&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                        <input type="text" name="group_id" id="group_id" class="form-control" placeholder="Id grupo"
-                            aria-label="Id grupo" aria-describedby="basic-addon1">
+                            id="basic-addon1">Nota&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <input type="number" name="marks" id="marks" class="form-control" placeholder="Nota"
+                            aria-label="Nota" aria-describedby="basic-addon1" min="0" max="10">
                     </div>
 
                     <div class="btn-group d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary" onclick="getStudent()">Mostrar</button>
-                        <button type="button" class="btn btn-success" onclick="postStudent()">Crear</button>
-                        <button type="button" class="btn btn-warning" onclick="putStudent()">Actualizar</button>
-                        <button type="button" class="btn btn-danger" onclick="delStudent()">Eliminar</button>
+                        <button type="button" class="btn btn-primary" onclick="getMark()">Mostrar</button>
+                        <button type="button" class="btn btn-success" onclick="postMark()">Crear</button>
+                        <button type="button" class="btn btn-warning" onclick="putMark()">Actualizar</button>
+                        <button type="button" class="btn btn-danger" onclick="delMark()">Eliminar</button>
                     </div>
 
                 </fieldset>
 
             </form>
             <div>&nbsp</div>
-            <table class="table d-none" id="table-student">
+            <table class="table d-none" id="table-marks">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Id grupo</th>
-                        <th scope="col">Fecha de ingreso</th>
+                        <th scope="col">Id Nota</th>
+                        <th scope="col">Id Estudiante</th>
+                        <th scope="col">Id Asignatura</th>
+                        <th scope="col">Fecha nota</th>
+                        <th scope="col">Nota</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">

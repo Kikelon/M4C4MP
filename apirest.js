@@ -115,6 +115,91 @@ app.delete("/student",
     }
 );
 
+app.get('/marks',
+    function (req, res) {
+        let sql;
+        if (req.query.marks_id == null) {
+            sql = 'SELECT * FROM marks';
+        } else {
+            sql = 'SELECT * FROM marks WHERE marks_id = \'' + req.query.marks_id + '\'';
+        };
+        connection.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        });
+    }
+);
+
+app.post('/marks',
+    function (req, res) {
+        console.log(req.body);
+        const student_id = parseInt(req.body.student_id);
+        const subject_id = parseInt(req.body.subject_id);
+        const date = req.body.date;
+        const marks = parseInt(req.body.marks);
+        let sql = 'INSERT INTO marks (student_id, subject_id, date, marks) VALUES ('
+            + student_id + ', '
+            + subject_id + ', \''
+            + date + '\', '
+            + marks + ')';
+        console.log(sql);
+        connection.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(result);
+                if (result.insertId) {
+                    res.send(String(result.insertId));
+                }
+                else {
+                    res.send('-1');
+                };
+            };
+        });
+    }
+);
+
+app.put("/marks",
+    function (req, res) {
+        console.log(req.body);
+        let params = [req.body.marks_id,
+        req.body.student_id,
+        req.body.subject_id,
+        req.body.date,
+        req.body.marks]
+
+        let sql = 'UPDATE marks SET student_id = COALESCE(?, student_id) , ' +
+            'subject_id = COALESCE(?, subject_id) , ' +
+            'date = COALESCE(?, date) , ' +
+            'marks = COALESCE(?, marks)  WHERE marks_id = COALESCE(?, marks_id)';
+        console.log(sql);
+        connection.query(sql, params, function (err, result) {
+            if (err)
+                console.log(err);
+            else {
+                res.send(result);
+            }
+        })
+    }
+);
+
+app.delete("/marks",
+    function (req, res) {
+        console.log(req.body);
+        let sql = "DELETE FROM marks WHERE marks_id = '" + req.body.marks_id + "'";
+        console.log(sql);
+        connection.query(sql, function (err, result) {
+            if (err)
+                console.log(err);
+            else {
+                res.send(result);
+            }
+        })
+    }
+);
 
 app.listen(3000);
 console.log('Escuchando en el puerto 3000');
