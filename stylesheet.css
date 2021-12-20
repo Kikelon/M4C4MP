@@ -1,0 +1,18 @@
+*{
+    /*  outline:  1px solid red; */
+    /* Define las fuentes a usar en el proyercto */
+    font-family: Arial, Helvetica, sans-serif;
+    /*La unidad relativa será siempre igual a 12px*/
+    /* font-size: 62.5%; /*rem --> 1rem = 10px */
+    font-size: 12px;
+    /* El borde de la caja se calculará como parte de la anchura y de la altura de la misma */
+    box-sizing: border-box;
+    /* Eliminamos todos los márgenes y los espacios para definirlos desde 0 */
+    margin: 0;
+    padding: 0;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }

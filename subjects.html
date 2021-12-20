@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheet.css">
+    <title>Módulo 4 - Día 4 - Miniproyecto final</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="bg-dark p-3">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" aria-current="page" href="./index.html">Alumnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="./marks.html">Notas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Asignaturas</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <form class="well form-horizontal" id="professional_form">
+                
+                <fieldset>
+
+                    <legend>
+                        <center>
+                            <h1><b>Asignaturas</b></h1>
+                        </center>
+                    </legend><br>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"
+                            id="basic-addon1">id&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <input type="text" name="student_id" id="student_id" class="form-control" placeholder="Id"
+                            aria-label="Id" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="btn-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" onclick="getStudent()">Nota media</button>
+                        <button type="button" class="btn btn-success" onclick="postStudent()">Apuntadas</button>
+                        <button type="button" class="btn btn-warning" onclick="putStudent()">Impartidas</button>
+                    </div>
+
+                </fieldset>
+
+            </form>
+            <div>&nbsp</div>
+            <table class="table d-none" id="table-student">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Id grupo</th>
+                        <th scope="col">Fecha de ingreso</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+        <script src="./subjects.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    </main>
+</body>
+
+</html>
