@@ -33,6 +33,7 @@ app.get('/student',
         } else {
             sql = 'SELECT * FROM student WHERE student_id = \'' + req.query.student_id + '\'';
         };
+        console.log(sql);
         connection.query(sql, function (err, result) {
             if (err) {
                 console.log(err);
@@ -83,7 +84,6 @@ app.put("/student",
         req.body.group_id,
         req.body.ingreso,
         req.body.student_id]
-
         let sql = 'UPDATE student SET nombre = COALESCE(?, nombre) , ' +
             'apellido = COALESCE(?, apellido) , ' +
             'edad = COALESCE(?, edad) , ' +
@@ -123,6 +123,7 @@ app.get('/marks',
         } else {
             sql = 'SELECT * FROM marks WHERE marks_id = \'' + req.query.marks_id + '\'';
         };
+        console.log(sql);
         connection.query(sql, function (err, result) {
             if (err) {
                 console.log(err);
@@ -170,7 +171,6 @@ app.put("/marks",
         req.body.subject_id,
         req.body.date,
         req.body.marks]
-
         let sql = 'UPDATE marks SET student_id = COALESCE(?, student_id) , ' +
             'subject_id = COALESCE(?, subject_id) , ' +
             'date = COALESCE(?, date) , ' +
@@ -198,6 +198,64 @@ app.delete("/marks",
                 res.send(result);
             }
         })
+    }
+);
+
+app.get('/average',
+    function (req, res) {
+        let sql = 'SELECT AVG (marks) AS average, student.nombre As nombre, student.apellido AS apellido FROM student ' +
+                    'LEFT JOIN marks ON marks.student_id = student.student_id ' +
+                    'WHERE student.student_id = ' + req.query.id;
+        console.log(sql);
+        connection.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        });
+    }
+);
+
+app.get('/enrolled',
+    function (req, res) {
+        let sql;
+        if (req.query.id == null) {
+            sql = 'SELECT student.nombre, student.apellido, subjects.title FROM student INNER JOIN marks ON student.student_id = marks.student_id INNER JOIN subjects ON marks.subject_id = subjects.subject_id';
+        } else {
+            sql = 'SELECT student.nombre, student.apellido, subjects.title FROM student LEFT JOIN marks ON student.student_id = marks.student_id LEFT JOIN subjects ON marks.subject_id = subjects.subject_id WHERE student.student_id = ' + req.query.id;
+        };
+        console.log(sql);
+        connection.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        });
+    }
+);
+
+app.get('/taught',
+    function (req, res) {
+        let sql;
+        if (req.query.id == null) {
+            sql = 'SELECT teachers.nombre AS nombre, teachers.apellido AS apellido, subjects.title AS title, subject_teacher.group_id AS group_id FROM teachers ' +
+                    'LEFT JOIN subject_teacher ON  teachers.teacher_id = subject_teacher.teacher_id ' +
+                    'LEFT JOIN subjects ON  subject_teacher.subject_id = subjects.subject_id';
+        } else {
+            sql = 'SELECT teachers.nombre AS nombre, teachers.apellido AS apellido, subjects.title AS title, subject_teacher.group_id AS group_id FROM teachers ' +
+                    'LEFT JOIN subject_teacher ON  teachers.teacher_id = subject_teacher.teacher_id ' +
+                    'LEFT JOIN subjects ON  subject_teacher.subject_id = subjects.subject_id WHERE teachers.teacher_id = ' + req.query.id;
+        };
+        console.log(sql);
+        connection.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        });
     }
 );
 

@@ -26,8 +26,9 @@ function getStudent(){
             document.getElementById("edad").value = '';
             document.getElementById("group_id").value = '';
             document.getElementById("ingreso").value = '';
-        }
-        if (res.length == 1) {
+        } 
+        else if (res.length == 1) 
+        {
             document.getElementById("table-student").className = "table table-sm d-none";
             document.getElementById("student_id").value = res[0].student_id;
             document.getElementById("nombre").value = res[0].nombre;

@@ -25,8 +25,9 @@ function getMark(){
             document.getElementById("subject_id").value = '';
             document.getElementById("date").value = '';
             document.getElementById("marks").value = '';
-        }
-        if (res.length == 1) {
+        } 
+        else if (res.length == 1) 
+        {
             document.getElementById("table-marks").className = "table table-sm d-none";
             document.getElementById("marks_id").value = res[0].marks_id;
             document.getElementById("student_id").value = res[0].student_id;
